@@ -1,8 +1,10 @@
-import React, { Component } from "react";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import React from "react";
+import { BrowserRouter as Router, Route } from "react-router-dom";
 import Wrapper from "./components/Wrapper";
 import Hero from "./components/Hero";
-import Container from "./components/Container"
+import Container from "./components/Container";
+import NavTabs from "./components/NavTabs";
+import SearchForm from "./components/SearchForm";
 import "./App.css";
 
 const App = () => (
@@ -10,14 +12,10 @@ const App = () => (
     <Wrapper>
       <Hero />
       <Container>
-      	<ul className="nav nav-tabs">
-      		<li className="nav-item">
-      			<a href="" className='nav-link active'>News</a>
-      		</li>
-      		<li className="nav-item">
-      			<a href="" className="nav-link">Saved</a>
-      		</li>
-      	</ul>
+      	<SearchForm />
+      	<NavTabs />
+      	<Route exact path="/" component={Wrapper} />
+      	<Route path="/saved" component={Wrapper} />
       </Container>
     </Wrapper>
   </Router>
