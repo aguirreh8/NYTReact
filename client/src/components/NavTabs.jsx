@@ -7,7 +7,7 @@ const NavTabs = () => (
   			<Link 
   				to="/news" 
   				className={
-  					window.location.pathname === "/news" ?
+  					window.location.pathname === "/news/:searchTerm" ?
   					'nav-link active' : 'nav-link'
   				}>
   					News

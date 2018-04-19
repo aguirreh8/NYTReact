@@ -15,7 +15,7 @@ const App = () => (
       <Container>
       	<SearchForm />
       	<NavTabs />
-      	<Route path="/news" component={News} />
+      	<Route path="/news/:searchTerm" component={News} />
       	<Route path="/saved" component={Wrapper} />
       </Container>
     </Wrapper>

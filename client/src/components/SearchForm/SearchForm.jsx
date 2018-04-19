@@ -1,4 +1,5 @@
 import React, {Component} from "react";
+import { Link } from "react-router-dom";
 import "./SearchForm.css";
 
 class SearchForm extends Component {
@@ -17,7 +18,7 @@ class SearchForm extends Component {
 		return (
 			<form className="search-form">
 				<div className="form-group">
-					<label for="topic">Topic:</label>
+					<label>Topic:</label>
 					<input 
 						type="text"
 						className="form-control"
@@ -28,7 +29,7 @@ class SearchForm extends Component {
 					/>
 				</div>
 				<div className="form-group">
-					<label for="startYear">Start Year:</label>
+					<label>Start Year:</label>
 					<input
 						type="text"
 						className="form-control"
@@ -39,7 +40,7 @@ class SearchForm extends Component {
 					/>
 				</div>
 				<div className="form-group">
-					<label for="endYear">End Year:</label>
+					<label>End Year:</label>
 					<input
 						type="text"
 						className="form-control"
@@ -49,7 +50,11 @@ class SearchForm extends Component {
 						placeholder="End Year" 
 					/>
 				</div>
-				 <button type="submit" className="btn btn-primary">Submit</button>
+				 <Link to={
+				 	`/news/${this.state.topic}+${this.state.startYear}+${this.state.endYear}`
+				 	}>
+				 	Submit
+				 </Link>
 			</form>
 		)
 	}
