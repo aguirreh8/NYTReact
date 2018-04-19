@@ -10,5 +10,10 @@ module.exports = {
 	removeArticle: function(req, res) {
 		db.Article.remove({ _id: req.params.id })
 		.then(article => res.json(article));
+	},
+
+	getSavedArticles: function(req, res) {
+		db.Article.find({})
+		.then(response => res.json(response));
 	}
 }

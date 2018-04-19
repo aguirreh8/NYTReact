@@ -1,6 +1,6 @@
 const express = require("express");
 const bodyParser = require("body-parser");
-const mongoose = require("mogoose");
+const mongoose = require("mongoose");
 const routes = require("./routes");
 const PORT = process.env.PORT || 3001;
 const app = express();
@@ -17,7 +17,7 @@ app.use(bodyParser.json());
 
 app.use(routes);
 
-mogoose.connect(process.env.MONGODB_URI || "mongodb://localhost/nytsreact");
+mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/nytsreact");
 
 app.listen(PORT, function() {
   console.log(`🌎 ==> Server now on port ${PORT}!`);

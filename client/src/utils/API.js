@@ -12,5 +12,17 @@ export default {
 			&begin_date=${startYear}0101
 			&end_date=${endYear}0101
 			&apikey=${key}`)
-	}
+	},
+
+	saveArticle: (articleData) => {
+		return axios.post("/api/saveArticle", articleData);
+	},
+
+	getSavedArticles: () => {
+		return axios.get("/api/getSavedArticles");
+	},
+
+	removeArticle: id => {
+		return axios.delete("/api/removeArticle/" + id);
+	} 
 };

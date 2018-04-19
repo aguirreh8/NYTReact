@@ -11,25 +11,31 @@ class News extends Component {
 	};
 
 	componentDidMount() {
-		const searchTerms = this.props.match.params.searchTerm.split("+");
-		const topic = searchTerms[0], 
-			startYear = searchTerms[1], 
-			endYear = searchTerms[2];
-		
-		this.setState({ topic, startYear, endYear});
-		this.getArticles(topic, startYear, endYear);
+		if (this.props.match.params.searchTerm) {
+			const searchTerms = this.props.match.params.searchTerm.split("+");
+			const topic = searchTerms[0], 
+				startYear = searchTerms[1], 
+				endYear = searchTerms[2];
+			
+			this.setState({ topic, startYear, endYear});
+			this.getArticles(topic, startYear, endYear); 
+		}
 	}
 
 	getArticles(topic, startYear, endYear) {
 		API.getArticles(topic, startYear, endYear)
 		.then(res => {
 			this.setState({ articles: res.data.response.docs })
-			console.log(this.state.articles);
 		})
 	}
 
-	saveArticle(headline, link) {
-		console.log("success!")
+	saveArticle(title, link) {
+		const articleData = { 
+			title,
+			link 
+		}
+
+		API.saveArticle(articleData);
 	}
 
 	render() {
@@ -39,7 +45,7 @@ class News extends Component {
 					{this.state.articles.map((article, i) => {
 						return (
 							<li className="list-group-item" key={i}>
-								<a href={article.web_url}>
+								<a href={article.web_url} target="_blank">
 									<span className="text-primary">{article.headline.main}</span>
 								</a>
 								<button style={{ position:"absolute", right:"5%", top:"10%" }} 

@@ -5,7 +5,8 @@ import Hero from "./components/Hero";
 import Container from "./components/Container";
 import NavTabs from "./components/NavTabs";
 import SearchForm from "./components/SearchForm";
-import News from "./components/News"
+import News from "./components/News";
+import SavedArticles from "./components/SavedArticles"
 import "./App.css";
 
 const App = () => (
@@ -16,7 +17,7 @@ const App = () => (
       	<SearchForm />
       	<NavTabs />
       	<Route path="/news/:searchTerm" component={News} />
-      	<Route path="/saved" component={Wrapper} />
+      	<Route path="/saved" component={SavedArticles} />
       </Container>
     </Wrapper>
   </Router>
