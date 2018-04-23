@@ -20,6 +20,19 @@ class News extends Component {
 			this.setState({ topic, startYear, endYear});
 			this.getArticles(topic, startYear, endYear); 
 		}
+		console.log(this.state.topic);
+	}
+
+	componentWillReceiveRoutes(nextProps) {
+		if (this.props.match.params.searchTerm !== nextProps.match.params.searchTerm) {
+			const searchTerms = nextProps.match.params.searchTerm.split("+");
+			const topic = searchTerms[0], 
+				startYear = searchTerms[1], 
+				endYear = searchTerms[2];
+			
+			this.setState({ topic, startYear, endYear});
+			this.getArticles(topic, startYear, endYear);	
+		}
 	}
 
 	getArticles(topic, startYear, endYear) {
